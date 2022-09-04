@@ -1,0 +1,8 @@
+{
+  "name": "Title of Collection",
+  "description": "Description of Collection",
+  "image": "https://image.url",
+  "external_link": "https://your.website",
+  "seller_fee_basis_points": 1000, 
+  "fee_recipient": "Your address"
+}

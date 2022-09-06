@@ -36,7 +36,7 @@ module.exports = {
         skipDryRun: false
       },
       rinkeby: {
-        provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/0a9d453d25754d52973ee1a69ea37937`),
+        provider: () => new HDWalletProvider(process.env.MNEMONIC, `https://rinkeby.infura.io/v3/0a9d453d25754d52973ee1a69ea37937`),
         network_id: 4,       // Rinkeby's id
         gas: 5500000,        // Rinkeby has a lower block limit than mainnet
         confirmations: 2,    // # of confirmations to wait between deployments. (default: 0)

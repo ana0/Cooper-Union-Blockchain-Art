@@ -22,12 +22,7 @@ const loop = async () => {
   const pineapplePizza = await ClassToken.at(tokenAddress);
 
   await pineapplePizza.mint(
-    '0x77937EA7f19D98de9559337782eE99c43F68242D', web3.utils.toWei("10"), // Jessie
-    {from: accounts[0]}
-  );
-
-  await pineapplePizza.mint(
-    '0x09fA5558A7Ed7494731F81701382c685EE1cF913', web3.utils.toWei("10"), // Mathieu
+    '0x77937EA7f19D98de9559337782eE99c43F68242D', web3.utils.toWei("30"), // Jessie
     {from: accounts[0]}
   );
 
@@ -47,12 +42,27 @@ const loop = async () => {
   );
 
   await pineapplePizza.mint(
-    '0x5AfB6d5D152cf470EA0F30Db9e89E93Ca905734C', web3.utils.toWei("10"), // Eva
+    '0x5AfB6d5D152cf470EA0F30Db9e89E93Ca905734C', web3.utils.toWei("30"), // Eva
     {from: accounts[0]}
   );
 
   await pineapplePizza.mint(
     '0x5588195F4D60B86A3f0Ee2050785e0003AFC0f4c', web3.utils.toWei("10"), // Sam
+    {from: accounts[0]}
+  );
+
+  await pineapplePizza.mint(
+    '0xe614AfC8F5092D27769Db5eC819AC0EEFd293af0', web3.utils.toWei("10"), // Luke
+    {from: accounts[0]}
+  );
+
+  // await pineapplePizza.mint(
+  //   '0x8c89d5008ed7753483E990f76e9D2795df8C3752', web3.utils.toWei("10"), // Malia
+  //   {from: accounts[0]}
+  // );
+
+  await pineapplePizza.mint(
+    '0x5FCec2b70B84ff729718F14A449354648C803C20', web3.utils.toWei("20"), // Julian
     {from: accounts[0]}
   );
 

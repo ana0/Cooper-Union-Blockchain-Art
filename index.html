@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- All html pages should have a head and a body -->
+    <head>
+        <title>NOT SO Simple website</title>
+
+        <!-- Css changes the look of a website, you can put it in the page directly -->
+        <!-- Css stands for cascading style sheet -->
+        <style>
+            body {
+                color: green;
+                background-color: lavender;
+            }
+            
+            /*css rules that are more specific override ones which are more general*/
+            .pink {
+                color: pink;
+            }
+
+            /* something in here*/
+            .smaller {
+                width: 20vw;
+            }
+
+            #find-me-fast {
+                background-color: red;
+            }
+        </style>
+
+        <!-- Or in an external sheet -->
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <!-- Things in a html page are called elements, there are lots of kinds -->
+        <!-- Elements have an open and closing tag -->
+
+        <p>I am a block of text THAT IS DIFFERENT</p>
+        <p class="pink">I am a block of text</p>
+        <a href="https://google.com">A link to google</a>
+        <button>A button</button>
+        <button id="find-me-fast">A button</button>
+        <img class="smaller" src="https://isthisa.computer/api/static/images/red.jpg">
+
+        <!-- Javascript is how to change an html page dynamically -->
+        <!-- You can also write it in the page directly using the script tags -->
+        <script type="text/javascript">
+            var button = document.getElementById("find-me-fast");
+            button.onclick = function(){
+                button.style.backgroundColor = "blue";
+                button.style.height = "200px";
+            };
+        </script>
+
+        <!-- You can also have javascript in an external document -->
+        <!-- <script src="index.js"></script> -->
+
+        <!-- Uncomment this once you've added the external javascript -->
+        <!-- <button onclick="addButton()">A button that adds a button</button> -->
+
+    </body>
+</html>

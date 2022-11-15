@@ -17,24 +17,24 @@ contract MyToken is ERC20, ERC20Burnable, Ownable {
         _mint(to, amount);
     }
 
-    // function setUrl(string memory url) public {
-    //     require(this.balanceOf(msg.sender) > 0);
-    //     imageUrls[msg.sender] = url;
-    // }
+    function setUrl(string memory url) public {
+        require(this.balanceOf(msg.sender) > 0);
+        imageUrls[msg.sender] = url;
+    }
 
-    // function setColor(string memory hexCode) public {
-    //     require(this.balanceOf(msg.sender) > 0);
-    //     colors[msg.sender] = hexCode;
-    // }
+    function setColor(string memory hexCode) public {
+        require(this.balanceOf(msg.sender) > 0);
+        colors[msg.sender] = hexCode;
+    }
 
-    // function makePost() public {
-    //     require(this.balanceOf(msg.sender) > cost);
-    //     _burn(msg.sender, cost);
+    function makePost() public {
+        require(this.balanceOf(msg.sender) > cost);
+        _burn(msg.sender, cost);
     
-    //     posts[0] = posts[1];
-    //     posts[1] = posts[2];
-    //     posts[2] = msg.sender;
+        posts[0] = posts[1];
+        posts[1] = posts[2];
+        posts[2] = msg.sender;
 
-    //     cost = cost + 1;
-    // }
+        cost = cost + 1;
+    }
 }

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- All html pages should have a head and a body -->
+    <head>
+        <title>Million dollar homepage easy mode</title>
+
+        <!-- Css changes the look of a website, you can put it in the page directly -->
+        <style>
+            body {
+                
+            }
+            
+            /*css rules that are more specific override ones which are more general*/
+            .cells {
+                height: 100px;
+                width: 100px;
+            }
+
+            .innerimage {
+                height: 50px;
+                width: 50px;
+                position: relative;
+                top: 25px;
+                left: 25px;
+            }
+
+            #find-me-fast {
+                background-color: red;
+            }
+        </style>
+
+        <!-- This is external javascript for interacting with the blockchain -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.8.1/web3.min.js" integrity="sha512-vtUOC0YIaNm/UutU7yfnwqnF9LOYnXtpHe2kwi1nvJNloeGQuncNBiEKP/3Ww3D62USAhbXGsnYpAYoiDsa+wA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript" src="metadata.json"></script>
+    </head>
+
+    <body>
+        <p>I am a block of text</p>
+        <div id="0" class="cells"></div>
+        <div id="1" class="cells"></div>
+        <div id="2" class="cells"></div>
+<!-- 
+        <button id="find-me-fast">Connect</button> -->
+
+        <!-- Javascript is how to change an html page dynamically -->
+        <!-- You can also write it in the page directly using the script tags -->
+        <script type="text/javascript">
+            window.onload = async function(){
+                console.log("testing connection ...")
+                const web3 = new Web3(new Web3.providers.HttpProvider(
+                  'https://goerli.infura.io/v3/7a0a5adcdb614bcdbeb44895d778c4b5',
+                ));
+                const block = await web3.eth.getBlock("latest");
+                console.log(block)
+
+                const contract = new web3.eth.Contract(metadata, "0x60bF3d88b3C9EE9f87772E56eD2B45229A8F9F9C");
+
+                for (let i = 0; i < 3; i++) {
+                    console.log("getting info for post " + i)
+                    const post = await contract.methods.posts(i).call();
+                    console.log(post)
+                    const url = await contract.methods.imageUrls(post).call();
+                    const color = await contract.methods.colors(post).call();
+
+                    const cell = document.getElementById(i);
+                    cell.style.cssText = "background-color: " + color + ";";
+                    cell.innerHTML = "<img class=\"innerimage\" src=\"" + url + "\">";
+                    console.log(cell)
+                }
+            }
+        </script>
+
+<!--         <script type="text/javascript"> 
+            var button = document.getElementById("find-me-fast");
+            button.onclick = async function(){
+                button.style.backgroundColor = "blue";
+                if (window.ethereum) {
+                    window.web3 = new Web3(ethereum);
+                    await ethereum.enable();
+                    const address = await web3.eth.getAccounts();
+                    console.log("Connected as: " + address);
+
+                    const contract = new web3.eth.Contract(metadata, "0x60bF3d88b3C9EE9f87772E56eD2B45229A8F9F9C");
+
+                    var postButton = document.createElement('button');
+                    postButton.innerHTML = "New post!";
+                    postButton.onclick = async function(){
+                        contract.methods.makePost().send({ from: address[0] })
+                    }
+                    document.body.appendChild(postButton);
+                }
+            };
+        </script> -->
+    </body>
+</html>

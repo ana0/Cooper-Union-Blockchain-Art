@@ -6,10 +6,10 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract MyToken is ERC20, ERC20Burnable, Ownable {
-    // mapping(address => string) public imageUrls;
-    // mapping(address => string) public colors;
-    // uint256 public cost = 0;
-    // address[3] public posts;
+    mapping(address => string) public imageUrls;
+    mapping(address => string) public colors;
+    uint256 public cost = 0;
+    address[3] public posts;
 
     constructor() ERC20("MyToken", "MTK") {}
 
